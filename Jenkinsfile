@@ -40,7 +40,6 @@ pipeline {
                 script {
                     echo "deploying"
                     echo '${params.VERSION}'
-                    echo `version: ${params.VERSION}`
                     echo "version: ${params.VERSION}"
                     echo params.VERSION
                     echo "version: " + params.VERSION
