@@ -15,32 +15,23 @@ pipeline {
             }
         }
         stage("build jar") {
-            when {
-                expression {
-                    params.executeTests == true
-                }
-            }
             steps {
                 script {
-                    echo "building jar"
-                    //gv.buildJar()
+                    gv.buildJar()
                 }
             }
         }
         stage("build image") {
             steps {
                 script {
-                    echo "building image"
-                    //gv.buildImage()
+                    gv.buildImage()
                 }
             }
         }
         stage("deploy") {
             steps {
                 script {
-                    echo "deploying"
-                    echo "version: ${params.VERSION}"
-                    //gv.deployApp()
+                    gv.deployApp()
                 }
             }
         }
