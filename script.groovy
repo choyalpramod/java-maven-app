@@ -16,6 +16,7 @@ def deployApp() {
     echo 'deploying the application...'
     echo "params: ${params.VERSION}"
     echo "params: ${params}"
+    echo "${ENV}"
 } 
 
 return this
