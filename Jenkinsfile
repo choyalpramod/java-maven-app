@@ -3,8 +3,8 @@ def gv
 pipeline {
     agent any
     parameters {
-        choice(name: 'VERSION', choices: ["1.2.0", "1.3.0", "1.4.0"], description: '')
-        booleanParam(name: 'executeTests', defaultValue: true, description: '')
+        choice(name: 'VERSION', choices: ["1.2.0", "1.3.0", "1.4.0"], description: 'Version')
+        booleanParam(name: 'executeTests', defaultValue: true, description: 'Execute Test')
     }
     stages {
         stage("init") {
@@ -39,10 +39,7 @@ pipeline {
             steps {
                 script {
                     echo "deploying"
-                    echo '${params.VERSION}'
                     echo "version: ${params.VERSION}"
-                    echo params.VERSION
-                    echo "version: " + params.VERSION
                     //gv.deployApp()
                 }
             }
