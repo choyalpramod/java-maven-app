@@ -29,7 +29,7 @@ pipeline {
         stage("deploy") {
             steps {
                 script {
-                    echo "deploying"
+                    echo "deploying to master"
                     //gv.deployApp()
                 }
             }
