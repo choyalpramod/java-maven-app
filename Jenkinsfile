@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script {
                     // gv.buildJar()
-                    buildJar "choyalpramod/demo-app:jma-${params.VERSION}"
+                    buildJar("choyalpramod/demo-app:jma-${params.VERSION}")
                 }
             }
         }
