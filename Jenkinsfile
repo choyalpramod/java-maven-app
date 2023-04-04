@@ -1,3 +1,6 @@
+#!/usr/bin/env groovy
+
+@Library('jenkins-shared-library')_
 def gv
 
 pipeline {
@@ -19,14 +22,16 @@ pipeline {
         stage("build jar") {
             steps {
                 script {
-                    gv.buildJar()
+                    // gv.buildJar()
+                    buildJar()
                 }
             }
         }
         stage("build image") {
             steps {
                 script {
-                    gv.buildImage()
+                    // gv.buildImage()
+                    buildImage()
                     echo "${params.VERSION}"
                 }
             }
