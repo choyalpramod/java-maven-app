@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script {
                     // gv.buildImage()
-                    buildImage("choyalpramod/demo-app:jma-1.1.7")
+                    buildImage("choyalpramod/demo-app:jma-${params.VERSION}")
                     echo "${params.VERSION}"
                 }
             }
