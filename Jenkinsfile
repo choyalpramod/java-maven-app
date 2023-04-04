@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script {
                     // gv.buildJar()
-                    buildJar("choyalpramod/demo-app:jma-1.1.7")
+                    buildJar()
                 }
             }
         }
@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script {
                     // gv.buildImage()
-                    buildImage()
+                    buildImage("choyalpramod/demo-app:jma-1.1.7")
                     echo "${params.VERSION}"
                 }
             }
