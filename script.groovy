@@ -5,6 +5,7 @@ def buildJar() {
 
 def buildImage() {
     echo "building the docker image..."
+    echo "${params.VERSION}"
     // withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
     //     sh 'docker build -t choyalpramod/demo-app:jma-2.0 .'
     //     sh "echo $PASS | docker login -u $USER --password-stdin"
