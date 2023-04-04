@@ -5,6 +5,9 @@ pipeline {
     tools {
         maven "maven-3.6"
     }
+    parameters{
+        string(name: 'VERSION', defaultValue: '1.1.0', description: 'version to deploy to prod')
+    }
     stages {
         stage("init") {
             steps {
@@ -24,6 +27,7 @@ pipeline {
             steps {
                 script {
                     gv.buildImage()
+                    echo "${params.VERSION}"
                 }
             }
         }
@@ -34,5 +38,16 @@ pipeline {
                 }
             }
         }
-    }   
+    } 
+    post {
+        always {
+            echo "post always"
+        }
+        success {
+            echo "post on success"
+        }
+        failure {
+            echo "post failure"
+        }
+    }  
 }
