@@ -31,7 +31,10 @@ pipeline {
             steps {
                 script {
                     // gv.buildImage()
-                    buildImage("choyalpramod/demo-app:jma-${params.VERSION}")
+                    def imageName = "choyalpramod/demo-app:jma-${params.VERSION}"
+                    buildImage(imageName)
+                    dockerLogin()
+                    dockerPush(imageName)
                     echo "${params.VERSION}"
                 }
             }
