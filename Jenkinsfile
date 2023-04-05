@@ -13,7 +13,7 @@ pipeline {
         maven "maven-3.6"
     }
     parameters{
-        string(name: 'VERSION', defaultValue: '1.1.0', description: 'version to deploy in prod')
+        string(name: 'VERSION', defaultValue: '1.1.0', description: 'version to deploy to prod')
     }
     stages {
         stage("init") {
