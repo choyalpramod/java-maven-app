@@ -32,38 +32,39 @@ pipeline {
                 }
             }
         }
-        stage("build jar") {
-            steps {
-                script {
-                    gv.buildJar()
-                }
-            }
-        }
-        stage("build image") {
-            steps {
-                script {
-                    gv.buildImage()
-                    echo "${env.IMAGE_NAME}"
-                }
-            }
-        }
-        stage("deploy") {
-            steps {
-                script {
-                    gv.deployApp()
-                }
-            }
-        }
+        // stage("build jar") {
+        //     steps {
+        //         script {
+        //             gv.buildJar()
+        //         }
+        //     }
+        // }
+        // stage("build image") {
+        //     steps {
+        //         script {
+        //             gv.buildImage()
+        //             echo "${env.IMAGE_NAME}"
+        //         }
+        //     }
+        // }
+        // stage("deploy") {
+        //     steps {
+        //         script {
+        //             gv.deployApp()
+        //         }
+        //     }
+        // }
         stage('commit version update') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'git-pass-personal', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                    withCredentials([sshUserPrivateKey(credentialsId: "choyalpramod-github", keyFileVariable: 'SSH_KEY')]) {
                         sh 'git config --global user.email "jenkins@example.com"'
                         sh 'git config --global user.name "Jenkins"'
                         sh 'git branch'
                         sh 'git status'
                         sh 'git config --list'
-                        sh "git remote set-url origin https://${USER}:${PASS}@github.com/choyalpramod/java-maven-app.git"
+                        sh 'GIT_SSH = "ssh -i $SSH_KEY"'
+                        sh "git remote set-url origin git@github.com:choyalpramod/java-maven-app.git"
                         sh 'git add .'
                         sh 'git commit -m "ci: version upgrade"'
                         sh 'git push origin HEAD:jenkins-jobs'
