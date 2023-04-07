@@ -57,23 +57,7 @@ pipeline {
         stage('commit version update') {
             steps {
                 script {
-                    // withCredentials([usernamePassword(credentialsId: 'git-pass-personal', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-                    //     sh 'git config --global user.email "choyalpramod@gmail.com"'
-                    //     sh 'git config --global user.name "Jenkins"'
-                    //     sh 'git branch'
-                    //     sh 'git status'
-                    //     sh 'git config --list'
-                    //     sh "git remote set-url origin https://${USER}:${PASS}@github.com/choyalpramod/java-maven-app.git"
-                    //     sh 'git add .'
-                    //     sh 'git commit -m "ci: version upgrade"'
-                    //     sh 'git push origin HEAD:jenkins-jobs'
-                    // }
                     sshagent (credentials: ['choyalpramod-github']) {
-                        sh '''
-                            [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
-                            ssh-keyscan -t rsa,dsa example.com >> ~/.ssh/known_hosts
-                            ssh user@example.com ...
-                        '''
                         sh 'git config --global user.email "choyalpramod@gmail.com"'
                         sh 'git config --global user.name "Jenkins"'
                         sh 'git branch'
