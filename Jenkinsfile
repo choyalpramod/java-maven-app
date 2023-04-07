@@ -63,7 +63,7 @@ pipeline {
                         sh 'git branch'
                         sh 'git status'
                         sh 'git config --list'
-                        sh 'GIT_SSH_COMMAND = "ssh -i $SSH_KEY"
+                        // sh 'GIT_SSH_COMMAND = "ssh -i $SSH_KEY"
                         sh "git remote set-url origin git@github.com:choyalpramod/java-maven-app.git"
                         sh 'git add .'
                         sh 'git commit -m "ci: version upgrade"'
