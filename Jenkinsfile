@@ -57,17 +57,18 @@ pipeline {
         stage('commit version update') {
             steps {
                 script {
-                    sshagent (credentials: ['choyalpramod-github']) {
-                        sh 'git config --global user.email "choyalpramod@gmail.com"'
-                        sh 'git config --global user.name "Jenkins"'
-                        sh 'git branch'
-                        sh 'git status'
-                        sh 'git config --list'
-                        sh "git remote set-url origin git@github.com:choyalpramod/java-maven-app.git"
-                        sh 'git add .'
-                        sh 'git commit -m "ci: version upgrade"'
-                        sh 'git push origin HEAD:jenkins-jobs'
-                    }
+                    echo 'version dump'
+                    // sshagent (credentials: ['choyalpramod-github']) {
+                    //     sh 'git config --global user.email "choyalpramod@gmail.com"'
+                    //     sh 'git config --global user.name "Jenkins"'
+                    //     sh 'git branch'
+                    //     sh 'git status'
+                    //     sh 'git config --list'
+                    //     sh "git remote set-url origin git@github.com:choyalpramod/java-maven-app.git"
+                    //     sh 'git add .'
+                    //     sh 'git commit -m "ci: version upgrade"'
+                    //     sh 'git push origin HEAD:jenkins-jobs'
+                    // }
                 }
             }
         }
