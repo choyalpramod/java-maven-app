@@ -68,8 +68,7 @@ pipeline {
                     //     sh 'git commit -m "ci: version upgrade"'
                     //     sh 'git push origin HEAD:jenkins-jobs'
                     // }
-                    withCredentials([sshUserPrivateKey(credentialsId: 'choyalpramod-github', keyFileVariable: 'SSH_KEY')]) {
-                    // sshagent (credentials: ['choyalpramod-github']) {
+                    sshagent (credentials: ['choyalpramod-github']) {
                         sh 'git config --global user.email "choyalpramod@gmail.com"'
                         sh 'git config --global user.name "Jenkins"'
                         sh 'git branch'
